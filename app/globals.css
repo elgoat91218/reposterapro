@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* Repostera Pro · estética SaaS inspirada en SimpleTurno */
+:root{
+ --bg:#F5F7FB;--surface:#FFFFFF;--primary:#315CF4;--primary-dark:#2448D8;
+ --accent:#EEF2FF;--text:#172033;--muted:#78849B;--border:#E5EAF3;
+ --success:#159B70;--warning:#E99A19;--danger:#DC5B62;
+ --vanilla:#F5F7FB;--caramel:#315CF4;
+ --shadow:0 10px 28px rgba(28,52,105,.07);--shadow-soft:0 3px 12px rgba(28,52,105,.045)
+}
+.dark{
+ --bg:#F5F7FB;--surface:#FFFFFF;--primary:#315CF4;--primary-dark:#2448D8;
+ --accent:#EEF2FF;--text:#172033;--muted:#78849B;--border:#E5EAF3;
+ --success:#159B70;--warning:#E99A19;--danger:#DC5B62;
+ --vanilla:#F5F7FB;--caramel:#315CF4;color-scheme:light
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg)!important;color:var(--text)!important}
+body{font-family:Inter,"DM Sans","Avenir Next",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.018em;overflow-x:hidden}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.serif{font-family:Inter,"DM Sans",ui-sans-serif,system-ui,sans-serif;letter-spacing:-.035em}
+.safe-bottom{padding-bottom:env(safe-area-inset-bottom)}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:#DCE3F0;border-radius:99px}
+html{scroll-behavior:smooth}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.card-soft{box-shadow:var(--shadow-soft)}
+.bakery-surface{position:relative;overflow:hidden;isolation:isolate;background:var(--surface)}
+.bakery-surface::before,.sticker-dot{display:none!important}
+.bakery-metric,.bakery-card{transition:box-shadow .18s ease,border-color .18s ease}
+.bakery-metric:hover,.bakery-card:hover{box-shadow:var(--shadow)}
+.new-order-cake-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:42px;padding:9px 15px;border:1px solid var(--primary);border-radius:8px;background:var(--primary);color:#fff;box-shadow:0 4px 10px rgba(49,92,244,.16);white-space:nowrap;transition:all .16s ease}
+.new-order-cake-button::after{display:none!important}
+.new-order-cake-button:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 6px 14px rgba(49,92,244,.2)}
+.new-order-cake-button:active{transform:scale(.985)}
+.new-order-cake-illustration{display:none!important}
+.new-order-cake-label{font-size:13px;font-weight:600;letter-spacing:0}
+@media(max-width:640px){
+ .page-header-action{max-width:48%}
+ .page-header-action button{max-width:100%;padding:8px 10px;font-size:12px;gap:6px}
+ .new-order-cake-button{min-width:0;padding:8px 11px;gap:5px}
+ .new-order-cake-label{font-size:12px}
+}
+.business-period-transition{animation:business-period-in .22s ease both}
+@keyframes business-period-in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.mobile-sheet-overlay{position:fixed!important;inset:0!important;z-index:50!important}
+.mobile-bottom-sheet{position:fixed!important;top:auto!important;bottom:0!important;left:0!important;right:0!important;inset-block-start:auto!important;inset-block-end:0!important;inset-inline-start:0!important;inset-inline-end:0!important;z-index:51!important;max-height:85dvh;transform:none!important}
+@media(min-width:768px){.mobile-sheet-overlay,.mobile-bottom-sheet{display:none!important}}
+/* Componentes */
+.rounded-\\[18px\\],.rounded-\\[22px\\],.rounded-\\[20px\\]{border-radius:14px!important}
+.rounded-\\[14px\\],.rounded-xl{border-radius:10px!important}
+.shadow-\\[var\\(--shadow-soft\\)\\]{box-shadow:var(--shadow-soft)!important}
+button.bg-\\[var\\(--primary\\)\\],button[class*="bg-[var(--primary)]"]{background:var(--primary)!important;color:#fff!important}
+input:focus,select:focus,textarea:focus{border-color:var(--primary)!important;box-shadow:0 0 0 3px rgba(49,92,244,.09)}

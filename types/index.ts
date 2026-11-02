@@ -1,0 +1,19 @@
+export type ID=string;
+export type OrderStatus="Pendiente"|"Confirmado"|"En preparación"|"Listo"|"Entregado"|"Cancelado";
+export interface Customer{id:ID;name:string;phone:string;email:string;address:string;notes:string;type?:"persona"|"negocio";businessName?:string;contactName?:string;createdAt:string;updatedAt:string}
+export interface Ingredient{id:ID;name:string;category:string;purchaseUnit:string;purchaseQuantity:number;baseUnit:"g"|"kg"|"ml"|"l"|"unidad";purchasePrice:number;stock:number;minimumStock:number;createdAt:string;updatedAt:string}
+export interface ProductIngredient{ingredientId:ID;quantity:number;unit?:Ingredient["baseUnit"]}
+export interface PackagingItem{ingredientId?:ID;name:string;quantity?:number;unit?:Ingredient["baseUnit"];cost:number}
+export interface ProductVariant{id:ID;name:string;price:number;margin:number;ingredients:ProductIngredient[];packaging:PackagingItem[];laborHours:number;laborRate:number}
+export interface Product{id:ID;name:string;description:string;price:number;margin:number;ingredients:ProductIngredient[];packaging:PackagingItem[];laborHours:number;laborRate:number;variants:ProductVariant[];active:boolean;createdAt:string;updatedAt:string}
+export interface OrderItem{productId:ID;productName:string;quantity:number;unitPrice:number;subtotal:number;costUnitSnapshot?:number;costTotalSnapshot?:number;ingredientCostUnitSnapshot?:number;ingredientCostTotalSnapshot?:number}
+export interface Payment{id:ID;date:string;amount:number;note:string}
+export type OrderActivityType="created"|"edited"|"status"|"customer"|"tag-added"|"tag-removed"|"payment"|"deleted";
+export interface OrderActivity{id:ID;type:OrderActivityType;message:string;createdAt:string}
+export interface Order{id:ID;customerId?:ID;orderDate?:string;items:OrderItem[];deliveryDate:string;deliveryTime:string;total:number;payments:Payment[];balance:number;status:OrderStatus;notes:string;tags?:string[];activity?:OrderActivity[];createdAt:string;updatedAt:string}
+export interface Expense{id:ID;description:string;category:string;amount:number;date:string;note:string}
+export interface Notification{id:ID;type:"order"|"delivery"|"stock"|"payment"|"system";title:string;message:string;read:boolean;createdAt:string;relatedEntityId?:ID;relatedEntityType?:string}
+export interface UserProfile{id:ID;name:string;email:string;avatar:string;createdAt:string;updatedAt:string}
+export interface BusinessProfile{id:ID;businessName:string;logo:string;phone:string;address:string;additionalInfo:string;createdAt:string;updatedAt:string}
+export interface Settings{currency:string;theme:"light"|"dark"|"system";demoData:boolean;defaultMargin:number;rounding:number;onboardingCompleted?:boolean;tourCompleted?:boolean;onboarding?:{businessTypes:string[];workLocation:string;orderChannels:string[];monthlyOrders:string}}
+export interface AppData{customers:Customer[];ingredients:Ingredient[];products:Product[];orders:Order[];orderHistory?:Record<ID,OrderActivity[]>;expenses:Expense[];notifications:Notification[];userProfile:UserProfile;businessProfile:BusinessProfile;settings:Settings}
